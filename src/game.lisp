@@ -1,9 +1,13 @@
 (in-package #:waller)
 
-(s:defsketch game ((board *board*))
-  (with-board (board)
-    (s:background (c :background))
-    (draw-board board s:width s:height)))
+(s:defsketch game ((board)
+                   (menu (make-menu))
+                   (screen :menu))
+  (case screen
+    (:menu  (draw-menu menu s:width s:height))
+    (:board (with-board (board)
+              (s:background (c :background))
+              (draw-board board s:width s:height)))))
 
 (defmethod kit.sdl2:mousebutton-event :around ((game game) state timestamp button x y)
   (with-board ((game-board game))
@@ -34,4 +38,10 @@
       ((:scancode-up :scancode-w) (move-hero :up))
       ((:scancode-down :scancode-s) (move-hero :down))
       ((:scancode-right :scancode-d) (move-hero :right))
-      ((:scancode-left :scancode-a) (move-hero :left)))))
+      ((:scancode-left :scancode-a) (move-hero :left))
+      ((:scancode-q) (setf (game-screen game) :menu
+                           (game-board game) NIL)))))
+
+(s:define-start-function (start) game ()
+  (:setup (game)
+    (setf (menu-game (game-menu game)) game)))
