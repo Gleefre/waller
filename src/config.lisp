@@ -17,6 +17,6 @@
       :menu-margin       1/5
       :menu-font-color   s:+black+)
 
-(defc :soundtrack    "soundtrack.wav"
+(defc :soundtrack    "soundtrack.mp3"
       :note-template "notes/note-~a.wav"
       :notes-range   '(-21 27))

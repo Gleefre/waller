@@ -21,13 +21,14 @@
           do (create-note x))))
 
 (defun create-soundtrack ()
-  (setf *soundtrack* (h:create (probe-file (data-path (c :soundtrack))) :mixer :music)))
+  (setf *soundtrack*
+        (make-instance 'h:environment :sets `((:normal ,(probe-file (data-path (c :soundtrack))))))))
 
 (defun play-soundtrack ()
-  (h:play *soundtrack* :reset T))
+  (h:transition *soundtrack* :normal))
 
 (defun mute-soundtrack ()
-  (h:stop *soundtrack*))
+  (h:transition *soundtrack* NIL))
 
 (defun sfx (&optional (x 3))
   (h:play (note x) :reset T))
