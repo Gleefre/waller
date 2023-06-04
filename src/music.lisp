@@ -33,6 +33,6 @@
   (h:play (note x) :reset T))
 
 (defun music-init ()
-  (h:maybe-start-simple-server)
+  (h:maybe-start-simple-server :mixers '((:music m:basic-mixer) (:effect m:basic-mixer)))
   (create-notes)
   (create-soundtrack))

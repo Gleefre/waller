@@ -5,4 +5,5 @@
   (:local-nicknames (#:s  #:sketch)
                     (#:sf #:sketch-fit)
                     (#:sc #:stopclock)
-                    (#:h  #:org.shirakumo.fraf.harmony)))
+                    (#:h  #:org.shirakumo.fraf.harmony)
+                    (#:m  #:org.shirakumo.fraf.mixed)))
