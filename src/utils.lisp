@@ -31,5 +31,5 @@
   `(let* ((,!lmargin ,lmargin)
           (,!rmargin (or ,rmargin ,!lmargin)))
      (let ((,var-x (+ ,var-x (* ,!lmargin ,var-width)))
-           (,var-width (* ,var-width (+ ,!lmargin ,!rmargin))))
+           (,var-width (* ,var-width (- 1 (+ ,!lmargin ,!rmargin)))))
        ,@body)))
