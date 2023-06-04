@@ -15,7 +15,8 @@
                (:file "sketch-buttons")
                (:file "board")
                (:file "save-board")
-               (:file "draw-board"))
+               (:file "draw-board")
+               (:file "editor"))
 
   :defsystem-depends-on (:deploy)
   :build-operation #-darwin "deploy-op" #+darwin "osx-app-deploy-op"

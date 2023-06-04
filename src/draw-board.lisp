@@ -1,7 +1,7 @@
 (in-package #:waller)
 
 (defparameter *cell-drawers* (make-hash-table))
-(defparameter *cell-draw-order* '(:tile :hero :uwall :dwall :rwall :lwall :cloud))
+(defparameter *cell-draw-order* '(:tile :hero :uwall :dwall :rwall :lwall :cloud :select))
 
 (defmacro define-cell-drawer (feature-name (state unit) &body body)
   `(setf (gethash ,feature-name *cell-drawers*)
