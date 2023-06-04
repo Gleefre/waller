@@ -24,19 +24,19 @@
 (defun board-height ()
   (array-dimension (cells *board*) 0))
 
-(defmacro do-cells ((&key (cell (gensym "cell")) (x (gensym "x")) (y (gensym "y")) result (board '*board*))
-                    &body body)
-  `(with-board (,board)
-     (dotimes (,x (board-width *board*) ,result)
-       (dotimes (,y (board-height *board*))
-         (let ((,cell (board-cell ,x ,y)))
-           ,@body)))))
-
 (defun cell (x y)
   (aref (cells *board*) x y))
 
 (defun (setf cell) (new-cell x y)
   (setf (aref (cells *board*) x y) new-cell))
+
+(defmacro do-cells ((&key (cell (gensym "cell")) (x (gensym "x")) (y (gensym "y")) result (board '*board*))
+                    &body body)
+  `(with-board (,board)
+     (dotimes (,x (board-width) ,result)
+       (dotimes (,y (board-height))
+         (let ((,cell (cell ,x ,y)))
+           ,@body)))))
 
 (defun in-board (x y)
   (and (integerp x)
