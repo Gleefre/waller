@@ -34,13 +34,20 @@
 
 (defmethod kit.sdl2:keyboard-event ((game game) state timestamp repeat-p keysym)
   (when (eq state :keydown)
-    (case (sdl2:scancode keysym)
-      ((:scancode-up :scancode-w) (move-hero :up))
-      ((:scancode-down :scancode-s) (move-hero :down))
-      ((:scancode-right :scancode-d) (move-hero :right))
-      ((:scancode-left :scancode-a) (move-hero :left))
-      ((:scancode-q) (setf (game-screen game) :menu
-                           (game-board game) NIL)))))
+    (case (game-screen game)
+      (:board
+       (case (sdl2:scancode keysym)
+         ((:scancode-up :scancode-w) (move-hero :up))
+         ((:scancode-down :scancode-s) (move-hero :down))
+         ((:scancode-right :scancode-d) (move-hero :right))
+         ((:scancode-left :scancode-a) (move-hero :left))
+         ((:scancode-q) (setf (game-screen game) :menu
+                              (game-board game) NIL))))
+      (:menu
+       (case (sdl2:scancode keysym)
+         ((:scancode-left :scancode-n) (incf (page (game-menu game))))
+         ((:scancode-right :scancode-p) (decf (page (game-menu game))))
+         ((:scancode-q) (kit.sdl2:close-window game)))))))
 
 (s:define-start-function (start) game ()
   (:setup (game)
