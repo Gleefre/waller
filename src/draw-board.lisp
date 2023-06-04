@@ -63,7 +63,7 @@
 (defun draw-board (board width height)
   (with-board (board)
     (let ((unit (min (/ width (board-width)) (/ height (board-height)))))
-      (do-cells (:cell cell :x x :y y)
-        (s:with-current-matrix
-          (s:translate (* unit x) (* unit y))
-          (draw-cell cell unit))))))
+      (sf:with-fit ((* unit (board-width)) (* unit (board-height)) width height)
+        (do-cells (:cell cell :x x :y y)
+          (with-translate ((* unit x) (* unit y))
+            (draw-cell cell unit)))))))
