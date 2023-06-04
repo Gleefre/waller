@@ -27,6 +27,7 @@
                (:file "editor")
                (:file "levels")
                (:file "menu")
+               (:file "music")
                (:file "game"))
 
   :defsystem-depends-on (:deploy)

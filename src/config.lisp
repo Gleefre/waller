@@ -16,3 +16,7 @@
       :menu-button-hover (s:rgb 0.5 0.9 0.5)
       :menu-margin       1/5
       :menu-font-color   s:+black+)
+
+(defc :soundtrack    "soundtrack.wav"
+      :note-template "notes/note-~a.wav"
+      :notes-range   '(-21 27))

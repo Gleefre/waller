@@ -4,4 +4,5 @@
            #:start-toplevel)
   (:local-nicknames (#:s  #:sketch)
                     (#:sf #:sketch-fit)
-                    (#:sc #:stopclock)))
+                    (#:sc #:stopclock)
+                    (#:h  #:org.shirakumo.fraf.harmony)))
