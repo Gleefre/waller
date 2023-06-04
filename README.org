@@ -1,0 +1,44 @@
+#+title: Waller
+#+author: Gleefre
+#+email: varedif.a.s@gmail.com
+
+#+description: This is a README file for the Waller game
+#+language: en
+
+* Installation
+** Requirements
+   - Libraries
+     Depends on [[https://github.com/vydd/sketch][sketch]], [[https://github.com/Gleefre/sketch-fit][sketch-fit]], [[https://github.com/Gleefre/stopclock][stopclock]], [[https://github.com/Shirakumo/harmony][harmony]] (and [[https://github.com/Shirakumo/cl-mixed][cl-mixed]]) and finally [[https://alexandria.common-lisp.dev/][alexandria]].
+     You will need to install [[https://github.com/Gleefre/sketch-fit][sketch-fit]] and [[https://github.com/Gleefre/stopclock][stopclock]] from source.
+   - Foreign dependencies
+     - SDL2, SDL2 Image, SDL2 TTF
+       =sketch= relies on =SDL2= library which is a C library.
+       See [[https://github.com/vydd/sketch#foreign-dependencies][sketch's README]] for more details.
+** Running
+   To run this game you need to load the ~:waller~ system:
+   #+BEGIN_SRC lisp
+   (ql:quickload :waller)
+   #+END_SRC
+   Then you need to call the main function:
+   #+BEGIN_SRC lisp
+   (waller:start)
+   #+END_SRC
+   To run the game from a script you might want to use the ~start-toplevel~ funtion:
+   #+BEGIN_SRC lisp
+   (waller:start-toplevel)
+   #+END_SRC
+   ~start-toplevel~ will quit the CL process when you close the game.
+* License
+   Copyright 2023 Gleefre
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
