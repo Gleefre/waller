@@ -53,7 +53,7 @@
   (:start
     (music-init)
     (play-soundtrack))
-  (:quit
+  (:on-close (game)
     (mute-soundtrack))
   (:setup (game)
     (setf (menu-game (game-menu game)) game)))
