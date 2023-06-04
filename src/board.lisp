@@ -2,7 +2,7 @@
 
 (defclass board ()
   ((cells     :initarg :cells     :accessor cells)
-   (states    :initarg :things    :accessor states
+   (states    :initarg :states    :accessor states
               :initform (make-hash-table :test 'equal))
    (positions :initarg :positions :accessor positions
               :initform (make-hash-table :test 'equal))))
