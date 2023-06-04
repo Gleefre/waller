@@ -20,7 +20,7 @@
 
 (define-cell-drawer :tile (state unit)
   (when state
-    (with-color (:tile)
+    (with-color ((c :tile))
       (s:rect (* unit           (c :margin))   (* unit           (c :margin))
               (* unit (- 1 (* 2 (c :margin)))) (* unit (- 1 (* 2 (c :margin))))))))
 
@@ -28,34 +28,34 @@
 
 (define-cell-drawer :hero (state unit)
   (when state
-    (with-color (:hero)
+    (with-color ((c :hero))
       (s:ellipse (/ unit 2) (/ unit 2)
                  (* unit (* 1/3 (sin (sc:time (c :hero-animation-clock)))))
                  (* unit 1/3)))))
 
 (define-cell-drawer :uwall (state unit)
   (when state
-    (with-color (:wall)
+    (with-color ((c :wall))
       (s:rect 0 0 unit (* unit (c :margin))))))
 
 (define-cell-drawer :dwall (state unit)
   (when state
-    (with-color (:wall)
+    (with-color ((c :wall))
       (s:rect 0 (* unit (- 1 (c :margin))) unit (* unit (c :margin))))))
 
 (define-cell-drawer :rwall (state unit)
   (when state
-    (with-color (:wall)
+    (with-color ((c :wall))
       (s:rect (* unit (- 1 (c :margin))) 0 (* unit (c :margin)) unit))))
 
 (define-cell-drawer :lwall (state unit)
   (when state
-    (with-color (:wall)
+    (with-color ((c :wall))
       (s:rect 0 0 (* unit (c :margin)) unit))))
 
 (define-cell-drawer :cloud (state unit)
   (when state
-    (with-color (:cloud)
+    (with-color ((c :cloud))
       (s:rect 0 0 unit unit)
       (s:image (s:load-resource (data-path (c :cloud-image)))
                0 0 unit unit))))
