@@ -82,6 +82,18 @@
 (defun tile-rem (x y feature)
   (tile-rem$ (cell x y) feature))
 
+(defmacro tile-toggle$ (cell feature &optional (state T)
+                        &aux (!cell (gensym "cell"))
+                             (!feature (gensym "feature")))
+  `(let ((,!cell ,cell)
+         (,!feature ,feature))
+     (if (tilep$ ,!cell ,!feature)
+         (tile-add$ ,cell ,!feature NIL)
+         (tile-add$ ,cell ,!feature ,state))))
+
+(defun tile-toggle (x y feature &optional (state T))
+  (tile-toggle$ (cell x y) feature state))
+
 (defun thing-coordinates (name)
   (destructuring-bind (&optional x y) (gethash name (positions *board*))
     (values x y)))
