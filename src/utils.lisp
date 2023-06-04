@@ -23,3 +23,13 @@
               #+deploy (let ((deploy:*data-location* *data-location*))
                          (deploy:data-directory))))
     (format nil "~a" (merge-pathnames relative-path data-folder))))
+
+;; Apply margin to segment
+(defmacro with-margin ((var-x var-width lmargin &optional rmargin) &body body
+                       &aux (!lmargin (gensym "lmargin"))
+                            (!rmargin (gensym "rmargin")))
+  `(let* ((,!lmargin ,lmargin)
+          (,!rmargin (or ,rmargin ,!lmargin)))
+     (let ((,var-x (+ ,var-x (* !lmargin ,var-width)))
+           (,var-width (* ,var-width (+ ,!lmargin ,!rmargin))))
+       ,@body)))
