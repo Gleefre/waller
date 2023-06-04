@@ -13,7 +13,8 @@
                (:file "config")
                (:file "sketch-utils")
                (:file "sketch-buttons")
-               (:file "board"))
+               (:file "board")
+               (:file "draw-board"))
 
   :defsystem-depends-on (:deploy)
   :build-operation #-darwin "deploy-op" #+darwin "osx-app-deploy-op"
