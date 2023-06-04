@@ -14,6 +14,7 @@
 (defun get-levels ()
   (loop with result = (make-array 0 :adjustable T :fill-pointer 0)
         for n from 1
-        while (probe-file (level-file n))
-        do (vector-push-extend (load-level n) result)
+        for file = (probe-file (level-file n))
+        while file
+        do (vector-push-extend file result)
         finally (return result)))
