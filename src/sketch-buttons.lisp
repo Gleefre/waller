@@ -28,7 +28,7 @@
       (:mousebuttonup (apply #'button-release button mouse-button args)))))
 
 (defmethod button-event :around ((button button) state mouse-button x y &rest args &key &allow-other-keys)
-  (multiple-value-bind (x y)
+  (destructuring-bind (x y)
       (s::transform-vertex (list x y) (%inverse-matrix button))
     (apply #'call-next-method button state mouse-button x y args)))
 
