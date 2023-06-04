@@ -7,8 +7,10 @@
   (defun (setf c) (color name)
     (setf (gethash name colors) color)))
 
-(defmacro defc (name value)
-  `(setf (c ,name) ,value))
+(defmacro defc (&body name-value-clauses &key &allow-other-keys)
+  `(setf ,@(loop for (name value) on name-value-clauses by #'cddr
+                 collect `(c ,name)
+                 collect value)))
 
 ;; data-path to get resource's path
 (defparameter *data-location* "res/")
