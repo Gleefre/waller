@@ -36,6 +36,7 @@
      (dotimes (,x (board-width) ,result)
        (dotimes (,y (board-height))
          (let ((,cell (cell ,x ,y)))
+           (declare (ignorable ,cell))
            ,@body)))))
 
 (defun in-board (x y)
