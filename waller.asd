@@ -10,6 +10,7 @@
   :serial T
   :components ((:file "packages")
                (:file "utils")
+               (:file "config")
                (:file "sketch-utils")
                (:file "sketch-buttons"))
 
