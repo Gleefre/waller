@@ -7,7 +7,10 @@
   :depends-on ("sketch" "sketch-fit" "stopclock" "harmony" "stealth-mixin" "alexandria")
 
   :pathname "src"
+  :serial T
   :components ((:file "packages")
+               (:file "utils")
+               (:file "sketch-utils")
                (:file "sketch-buttons"))
 
   :defsystem-depends-on (:deploy)
