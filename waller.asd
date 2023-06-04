@@ -7,7 +7,8 @@
   :depends-on ("sketch" "sketch-fit" "stopclock" "harmony" "stealth-mixin" "alexandria")
 
   :pathname "src"
-  :components ((:file "packages"))
+  :components ((:file "packages")
+               (:file "sketch-buttons"))
 
   :defsystem-depends-on (:deploy)
   :build-operation #-darwin "deploy-op" #+darwin "osx-app-deploy-op"
