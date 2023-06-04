@@ -4,7 +4,15 @@
   :author "Gleefre <varedif.a.s@gmail.com>"
   :licence "Apache 2.0"
 
-  :depends-on ("sketch" "sketch-fit" "stopclock" "harmony" "stealth-mixin" "alexandria")
+  :depends-on ("sketch"
+               "sketch-fit" "stopclock"
+               "stealth-mixin" "alexandria"
+               "cl-mixed-wav" "harmony"
+               #+(and linux (not android)) "cl-mixed-pulse"
+               #+android "cl-mixed-aaudio"
+               #+darwin "cl-mixed-coreaudio"
+               #+windows "cl-mixed-wasapi"
+               #+bsd "cl-mixed-oss")
 
   :pathname "src"
   :serial T
