@@ -22,7 +22,7 @@
   (array-dimension (cells *board*) 0))
 
 (defun board-height ()
-  (array-dimension (cells *board*) 0))
+  (array-dimension (cells *board*) 1))
 
 (defun cell (x y)
   (aref (cells *board*) x y))
