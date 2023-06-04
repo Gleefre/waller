@@ -14,6 +14,7 @@
                (:file "sketch-utils")
                (:file "sketch-buttons")
                (:file "board")
+               (:file "save-board")
                (:file "draw-board"))
 
   :defsystem-depends-on (:deploy)
