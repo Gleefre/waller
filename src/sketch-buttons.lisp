@@ -34,6 +34,9 @@
 
 (defgeneric bind (button type function))
 
+(defmethod bind ((button button) type function)
+  button)
+
 (defmethod bind ((button button) (type (eql :press)) function)
   (setf (on-press button) function)
   button)
