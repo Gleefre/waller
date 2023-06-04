@@ -125,7 +125,7 @@
     (tile-add x y name state)
     (set-thing-coordinates name x y)))
 
-(defun move (name dx dy &optional wrap-x wrap-y check-hook)
+(defun move (name dx dy &key wrap-x wrap-y check-hook)
   (multiple-value-bind (x y) (thing-coordinates name)
     (when (and (in-board x y))
       (let ((x* (if wrap-x
