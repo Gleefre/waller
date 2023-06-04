@@ -38,7 +38,7 @@
          ((:scancode-right :scancode-p) (decf (page (game-menu game))))
          ((:scancode-q) (kit.sdl2:close-window game)))))))
 
-(s:define-start-function (start) game (:resizable T)
+(s:define-start-function (start) game (:resizable T :title "Waller")
   (:start
     (music-init)
     (play-soundtrack))
