@@ -8,7 +8,8 @@
 * Installation
 ** Requirements
    - Libraries
-     - Depends on [[https://github.com/vydd/sketch][sketch]], [[https://github.com/Gleefre/sketch-fit][sketch-fit]], [[https://github.com/Gleefre/stopclock][stopclock]], [[https://github.com/Shirakumo/harmony][harmony]] (and [[https://github.com/Shirakumo/cl-mixed][cl-mixed]]), [[https://github.com/robert-strandh/Stealth-mixin][Stealth-mixin]] and finally [[https://alexandria.common-lisp.dev/][alexandria]].
+     - Depends on [[https://github.com/vydd/sketch][sketch]], [[https://github.com/Gleefre/sketch-fit][sketch-fit]], [[https://github.com/Gleefre/stopclock][stopclock]], [[https://github.com/Shirakumo/harmony][harmony]] (and [[https://github.com/Shirakumo/cl-mixed][cl-mixed]]), [[https://github.com/robert-strandh/Stealth-mixin][Stealth-mixin]] and finally [[https://alexandria.common-lisp.dev/][alexandria]]
+     - You will need to use ~define-start-function-2~ branch of my sketch's [[https://github.com/Gleefre/sketch][fork]].
      - You will need to install [[https://github.com/Gleefre/sketch-fit][sketch-fit]] and [[https://github.com/Gleefre/stopclock][stopclock]] from source, while others are available from [[https://www.quicklisp.org/beta/][quicklisp]].
    - Foreign dependencies
      - SDL2, SDL2 Image, SDL2 TTF
