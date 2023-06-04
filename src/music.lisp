@@ -21,7 +21,7 @@
           do (create-note x))))
 
 (defun create-soundtrack ()
-  (setf *soundtrack* (h:create (pathname (data-path (c :soundtrack))) :mixer :music)))
+  (setf *soundtrack* (h:create (probe-file (data-path (c :soundtrack))) :mixer :music)))
 
 (defun play-soundtrack ()
   (h:play *soundtrack* :reset T))
