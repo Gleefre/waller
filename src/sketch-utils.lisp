@@ -21,14 +21,15 @@
      (scale ,sx ,sy ,cx ,cy)
      ,@body))
 
-;; Use custom font as the default one
+;; Use custom font as the default one (if we are being deployed
+#+deploy
 (let ((font))
   (defun s::make-default-font ()
     (setf font (or font
                    (s:make-font :face (s:load-resource (data-path (c :default-font)))
                                 :color s:+black+
                                 :size 18)))))
-
+#+deploy
 (let ((font))
   (defun s::make-error-font ()
     (setf font (or font
