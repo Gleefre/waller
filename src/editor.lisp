@@ -18,10 +18,10 @@
     (s:with-pen (s:make-pen :stroke (c :select) :weight 5)
       (s:rect 0 0 unit unit))))
 
-(s:defsketch editor ((board *board*) (mode  :none))
+(s:defsketch editor ((board *board*) (mode :none))
   (with-board (board)
     (s:background (c :background))
-    (let* ((unit (min (/ s:width (+ 2 (board-width)))
+    (let* ((unit (min (/ s:width (+ 2 1/2 (board-width)))
                       (/ s:height (max (board-height)
                                        (* 3/2
                                           (+ (length *features-to-edit*)
@@ -30,7 +30,9 @@
            (bh (* unit (board-height))))
       ;; board
       (with-translate ((* 2 unit) 0)
-        (sf:with-fit (bw bh (- s:width (* 2 unit)) s:height)
+        (sf:with-fit (bw bh (- s:width (* (+ 2 1/2) unit)) s:height)
+          (s:with-pen (s:make-pen :stroke (c :select) :weight 3)
+            (s:rect 0 0 bw bh))
           (draw-board board bw bh)
           (do-cells (:x x :y y)
             (with-translate ((* unit x) (* unit y))
@@ -45,7 +47,9 @@
                  (bind (brect 0 0 unit unit) :release (let ((feature feature))
                                                         (lambda (b)
                                                           (declare (ignore b))
-                                                          (setf mode feature))))
+                                                          (if (eq mode feature)
+                                                              (setf mode :none)
+                                                              (setf mode feature)))))
                  (s:translate 0 unit)
                  (s:translate 0 (/ unit 4)))))))
 
