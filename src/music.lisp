@@ -30,7 +30,7 @@
   (h:stop *soundtrack*))
 
 (defun sfx (&optional (x 3))
-  (h:play (note-file x)))
+  (h:play (note x) :reset T))
 
 (defun music-init ()
   (h:maybe-start-simple-server)
