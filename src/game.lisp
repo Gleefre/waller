@@ -49,6 +49,6 @@
          ((:scancode-right :scancode-p) (decf (page (game-menu game))))
          ((:scancode-q) (kit.sdl2:close-window game)))))))
 
-(s:define-start-function (start) game ()
+(s:define-start-function (start) game (:resizable T)
   (:setup (game)
     (setf (menu-game (game-menu game)) game)))
