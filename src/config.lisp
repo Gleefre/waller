@@ -6,6 +6,7 @@
 (defc
   :background  s:+black+
   :tile        s:+white+
+  :hero        s:+green+
   :cloud       (s:gray 0.7)
   :cloud-image "cloud.png"
   :wall        (s:gray 0.3)

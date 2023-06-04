@@ -1,7 +1,7 @@
 (in-package #:waller)
 
 (defparameter *cell-drawers* (make-hash-table))
-(defparameter *cell-draw-order* '(:tile :uwall :dwall :rwall :lwall :cloud))
+(defparameter *cell-draw-order* '(:tile :hero :uwall :dwall :rwall :lwall :cloud))
 
 (defmacro define-cell-drawer (feature-name (state unit) &body body)
   `(setf (gethash ,feature-name *cell-drawers*)
@@ -23,6 +23,15 @@
     (with-color (:tile)
       (s:rect (* unit           (c :margin))   (* unit           (c :margin))
               (* unit (- 1 (* 2 (c :margin)))) (* unit (- 1 (* 2 (c :margin))))))))
+
+(defc :hero-animation-clock (sc:make-clock))
+
+(define-cell-drawer :hero (state unit)
+  (when state
+    (with-color (:hero)
+      (s:ellipse (/ unit 2) (/ unit 2)
+                 (* unit (* 1/3 (sin (sc:time (c :hero-animation-clock)))))
+                 (* unit 1/3)))))
 
 (define-cell-drawer :uwall (state unit)
   (when state
