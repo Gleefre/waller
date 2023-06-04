@@ -19,9 +19,10 @@
   (defun data-path (relative-path)
     (setf data-folder
           (or data-folder
-              #-deploy (asdf:system-relative-pathname "waller" *data-location*)
-              #+deploy (let ((deploy:*data-location* *data-location*))
-                         (deploy:data-directory))))
+              (if (member :deploy *features*)
+                  (let ((deploy:*data-location* *data-location*))
+                    (deploy:data-directory))
+                  (asdf:system-relative-pathname "waller" *data-location*))))
     (format nil "~a" (merge-pathnames relative-path data-folder))))
 
 ;; Apply margin to segment
