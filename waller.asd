@@ -28,6 +28,7 @@
                (:file "levels")
                (:file "menu")
                (:file "music")
+               (:file "main")
                (:file "game"))
 
   :defsystem-depends-on (:deploy)
