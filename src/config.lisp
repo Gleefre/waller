@@ -18,5 +18,5 @@
       :menu-font-color   s:+black+)
 
 (defc :soundtrack    "soundtrack.ogg"
-      :note-template "notes/note-~a.wav"
+      :note-template "notes/note-~a.ogg"
       :notes-range   '(-21 27))
