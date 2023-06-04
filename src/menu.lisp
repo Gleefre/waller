@@ -43,6 +43,7 @@
                            :press (let ((n n))
                                     (lambda (b)
                                       (declare (ignore b))
+                                      (setf (menu-hovers menu) (make-hash-table))
                                       (setf (game-board  (menu-game menu)) (level menu n)
                                             (game-screen (menu-game menu)) :board)))
                            :hover (let ((pos pos))
