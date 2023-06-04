@@ -17,6 +17,7 @@
                (:file "save-board")
                (:file "draw-board")
                (:file "editor")
+               (:file "levels")
                (:file "game"))
 
   :defsystem-depends-on (:deploy)
