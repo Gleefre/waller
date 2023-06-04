@@ -4,9 +4,10 @@ APP = waller
 all: clean build
 
 build:
-	$(LISP) --eval "(ql:quickload :deploy)" \
+	$(LISP) --eval "(ql:quickload '(:deploy :sketch :harmony))" \
+		--eval "(push :deploy *features*)" \
 		--load $(APP).asd \
-		--eval "(ql:quickload :$(APP))" \
+		--eval "(asdf:load-system :$(APP) :force T)" \
 		--eval "(deploy:define-library cl-opengl-bindings::opengl :dont-deploy t)" \
 		--eval "(deploy:define-resource-directory data \"res/\")" \
 		--eval "(asdf:make :$(APP))" \
