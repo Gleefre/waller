@@ -30,6 +30,6 @@
                             (!rmargin (gensym "rmargin")))
   `(let* ((,!lmargin ,lmargin)
           (,!rmargin (or ,rmargin ,!lmargin)))
-     (let ((,var-x (+ ,var-x (* !lmargin ,var-width)))
+     (let ((,var-x (+ ,var-x (* ,!lmargin ,var-width)))
            (,var-width (* ,var-width (+ ,!lmargin ,!rmargin))))
        ,@body)))
