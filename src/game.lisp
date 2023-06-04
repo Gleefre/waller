@@ -50,5 +50,10 @@
          ((:scancode-q) (kit.sdl2:close-window game)))))))
 
 (s:define-start-function (start) game (:resizable T)
+  (:start
+    (music-init)
+    (play-soundtrack))
+  (:quit
+    (mute-soundtrack))
   (:setup (game)
     (setf (menu-game (game-menu game)) game)))
