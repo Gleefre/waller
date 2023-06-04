@@ -23,12 +23,12 @@ clean:
 bundle: all
 	mkdir $(APP)
 	mv bin $(APP)/
-	cp LICENSE $(APP)
-	cp NOTICE $(APP)
+	cp LICENSE $(APP)/
+	cp NOTICE $(APP)/
 
 lin-bundle: bundle
-	cp run.sh $(APP)
+	cp run.sh $(APP)/
 	zip -r $(APP)-lin $(APP)
 
 win-bundle: all
-	cp run.bat $(APP)
+	cp run.bat $(APP)/
