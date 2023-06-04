@@ -7,7 +7,7 @@
   :depends-on ("sketch"
                "sketch-fit" "stopclock"
                "stealth-mixin" "alexandria"
-               "cl-mixed-wav" "harmony"
+               "harmony" "cl-mixed-vorbis"
                #+(and linux (not android)) "cl-mixed-pulse"
                #+android "cl-mixed-aaudio"
                #+darwin "cl-mixed-coreaudio"
