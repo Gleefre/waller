@@ -11,12 +11,18 @@
       :cloud-image "cloud.png"
       :margin      1/8)
 
-(defc :menu-background   (s:gray 0.2)
+(defc :menu-background   (s:rgb 0.25 0.1 0.1)
       :menu-button       (s:rgb 0.3 0.7 0.3)
       :menu-button-hover (s:rgb 0.5 0.9 0.5)
-      :menu-margin       1/5
+      :menu-margin       1/10
       :menu-font-color   s:+black+
-      :cleared           (s:rgb 0.2 0.3 0.9))
+      :cleared           (s:rgb 0.2 0.3 0.9)
+      :buttons           (s:rgb 0.1 0.5 0.2)
+      :buttons-hover     (s:rgb 0.1 0.6 0.2)
+      :buttons-disabled  (s:rgb 0.1 0.3 0.2)
+      :arrow             (s:rgb 0.2 0.8 0.65)
+      :arrow-hover       (s:rgb 0.2 0.8 0.7)
+      :arrow-disabled    (s:rgb 0.1 0.2 0.3))
 
 (defc :soundtrack    "soundtrack.ogg"
       :note-template "notes/note-~a.ogg"
