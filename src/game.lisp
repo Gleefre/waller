@@ -36,7 +36,8 @@
          ((:scancode-right :scancode-d) (move-hero :right))
          ((:scancode-left :scancode-a) (move-hero :left))
          ((:scancode-q) (setf (game-screen game) :menu
-                              (game-level game) NIL))))
+                              (game-level game) NIL))
+         ((:scancode-r) (level-reset (game-level game)))))
       (:menu
        (case (sdl2:scancode keysym)
          ((:scancode-left :scancode-n) (menu-next (game-menu game)))
