@@ -14,7 +14,7 @@
 
 (defun check-win ()
   (do-cells (:cell cell :result T)
-    (when (tilep$ cell :food)
+    (when (and (tilep$ cell) (tilep$ cell :food))
       (return-from check-win NIL))))
 
 (defun move-hero (direction)
