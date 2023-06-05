@@ -1,7 +1,8 @@
 (defpackage #:waller
   (:use #:cl)
   (:export #:start
-           #:start-toplevel)
+           #:start-toplevel
+           #:editor-toplevel)
   (:local-nicknames (#:s  #:sketch)
                     (#:sf #:sketch-fit)
                     (#:sc #:stopclock)

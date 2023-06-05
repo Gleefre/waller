@@ -39,7 +39,10 @@
 
 (s:defsketch editor ((level)
                      (mode :none)
-                     (mode-state T))
+                     (mode-state T)
+                     (close))
+  (when close
+    (kit.sdl2:close-window s::*sketch*))
   (with-board ((level-board level))
     (s:background (c :background))
     (let* ((unit (min (/ s:width (+ 2 1/2 (board-width)))
@@ -92,5 +95,66 @@
       ((:scancode-l) (level-save-board (editor-level editor)))
       ((:scancode-r) (level-reset (editor-level editor)))
       ((:scancode-q) (kit.sdl2:close-window editor)))))
+
+(defparameter *help-text*
+  (format nil
+  "Usage:
+   ./run-editor.~a [options] <level-number>
+     <level-number>           Number of level to edit (must be a positive integer).
+     -W, --width <number>     Create new level with given width (must be a positive integer).
+                                (-H must be also present)
+     -H, --height <number>    Create new level with given height (must be a positive integer).
+                                (-W must be also present)
+     -h, --help               Display this message"
+  #+windows "bat" #-windows "sh"))
+
+(defun editor-cmd-args ()
+  (let ((args (uiop:command-line-arguments)))
+    (when (or (null args)
+              (evenp (length args))
+              (member "-h" args :test #'string=)
+              (member "--help" args :test #'string-equal)
+              (member "-help" args :test #'string-equal)
+              (not (or (and (= (length args) 1)
+                            (let ((num (parse-integer (car args) :junk-allowed T)))
+                              (and num (plusp num)
+                                   (return-from editor-cmd-args (list :level-number num)))))
+                       (and (= (length args) 5)
+                            (let ((num-1 (parse-integer (second args) :junk-allowed T))
+                                  (num-2 (parse-integer (fourth args) :junk-allowed T))
+                                  (num (parse-integer (fifth args) :junk-allowed T)))
+                              (and num (plusp num)
+                                   num-1 (plusp num-1)
+                                   num-2 (plusp num-2)
+                                   (loop with w with h
+                                         for arg in (list (first args) (third args))
+                                         for arg-num in (list num-1 num-2)
+                                         do (cond
+                                              ((member arg '("-W" "-width" "--width") :test #'string-equal)
+                                               (setf w arg-num))
+                                              ((member arg '("-H" "-height" "--height") :test #'string-equal)
+                                               (setf h arg-num))
+                                              (T (return NIL)))
+                                         finally (if (and w h)
+                                                     (return-from editor-cmd-args (list :level-number num
+                                                                                        :new T
+                                                                                        :width w
+                                                                                        :height h))
+                                                     (return NIL)))))))))
+      (return-from editor-cmd-args (list :help T)))))
+
+(defmethod initialize-instance :after ((editor editor) &key &allow-other-keys)
+  (when s::*build*
+    (let ((args (editor-cmd-args)))
+      (cond
+        ((getf args :help)
+         (format t "~a~%" *help-text*)
+         (setf (editor-close editor) T))
+        (T
+         (setf (editor-level editor)
+               (make-level (getf args :level-number)
+                           (when (getf args :new)
+                             (make-board (getf args :width)
+                                         (getf args :height))))))))))
 
 (s:define-start-function (editor) editor (:resizable T))

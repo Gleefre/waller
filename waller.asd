@@ -35,3 +35,16 @@
   :build-operation #-darwin "deploy-op" #+darwin "osx-app-deploy-op"
   :build-pathname "waller"
   :entry-point "waller:start-toplevel")
+
+(asdf:defsystem "waller/editor"
+  :description "Waller - Game for Lisp Game Jam 2023 - level editor"
+  :version "0.3.0"
+  :author "Gleefre <varedif.a.s@gmail.com>"
+  :licence "Apache 2.0"
+
+  :depends-on ("waller")
+
+  :defsystem-depends-on (:deploy)
+  :build-operation #-darwin "deploy-op" #+darwin "osx-app-deploy-op"
+  :build-pathname "waller-editor"
+  :entry-point "waller:editor-toplevel")
