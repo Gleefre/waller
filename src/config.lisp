@@ -39,7 +39,7 @@
   :menu-background          (s:rgb 0.25 0.9 0.9)
   :win-animation-background (s:rgb 0.3 0.8 0.2 0.9))
 
-(defc 
+(defc
   :menu-margin       1/10
   :menu-font-color   (s:rgb 0.3 0.1 0.8)
   :cleared           (s:rgb 0.3 1.0 0.2)
@@ -51,5 +51,3 @@
   :arrow-hover       (s:rgb 0.4 0.5 0.9)
   :menu-button       (c :buttons)
   :menu-button-hover (c :buttons-hover))
-
-
