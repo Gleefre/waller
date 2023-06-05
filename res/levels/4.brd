@@ -1,0 +1,8 @@
+
+(:CELLS
+ #2A((NIL (:FOOD :A :TILE T) NIL)
+     ((:TILE T) (:LWALL :A :HERO :A :TILE T) (:TILE T))
+     ((:TILE T) (:UWALL :B :LWALL :B :DWALL :B :RWALL :B) (:TILE T))
+     ((:TILE T) (:TILE T) (:TILE T))
+     (NIL (:FOOD :B :TILE T) NIL))
+ :STATES NIL :POSITIONS ((:HERO 1 1)) :DESCRIPTION "") 
