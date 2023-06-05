@@ -13,12 +13,12 @@
 
 (defmacro with-rotate ((angle &optional (cx 0) (cy 0)) &body body)
   `(s:with-current-matrix
-     (rotate ,angle ,cx ,cy)
+     (s:rotate ,angle ,cx ,cy)
      ,@body))
 
 (defmacro with-scale ((sx &optional sy (cx 0) (cy 0)) &body body)
   `(s:with-current-matrix
-     (scale ,sx ,sy ,cx ,cy)
+     (s:scale ,sx ,sy ,cx ,cy)
      ,@body))
 
 ;; Use custom font as the default one (if we are being deployed
