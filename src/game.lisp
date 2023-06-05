@@ -27,24 +27,23 @@
       (call-next-method))))
 
 (defmethod kit.sdl2:keyboard-event ((game game) state timestamp repeat-p keysym)
-  (let ((*game* game))
-    (when (eq state :keydown)
-      (case (game-screen game)
-        (:level
-         (case (sdl2:scancode keysym)
-           ((:scancode-up :scancode-w) (move-hero :up))
-           ((:scancode-down :scancode-s) (move-hero :down))
-           ((:scancode-right :scancode-d) (move-hero :right))
-           ((:scancode-left :scancode-a) (move-hero :left))
-           ((:scancode-q) (setf (game-screen game) :menu
-                                (game-level game) NIL))))
-        (:menu
-         (case (sdl2:scancode keysym)
-           ((:scancode-left :scancode-n) (incf (page (game-menu game))))
-           ((:scancode-right :scancode-p) (decf (page (game-menu game))))
-           ((:scancode-q) (kit.sdl2:close-window game))))))))
+  (when (eq state :keydown)
+    (case (game-screen game)
+      (:level
+       (case (sdl2:scancode keysym)
+         ((:scancode-up :scancode-w) (move-hero :up))
+         ((:scancode-down :scancode-s) (move-hero :down))
+         ((:scancode-right :scancode-d) (move-hero :right))
+         ((:scancode-left :scancode-a) (move-hero :left))
+         ((:scancode-q) (setf (game-screen game) :menu
+                              (game-level game) NIL))))
+      (:menu
+       (case (sdl2:scancode keysym)
+         ((:scancode-left :scancode-n) (menu-next (game-menu game)))
+         ((:scancode-right :scancode-p) (menu-previous (game-menu game)))
+         ((:scancode-q) (kit.sdl2:close-window game)))))))
 
-(s:define-start-function (start) game (:resizable T :title "Waller")
+(s:define-start-function (start) game (:resizable T :title "Waller" :width 800 :height 800)
   (:start
     (music-init)
     (play-soundtrack))
