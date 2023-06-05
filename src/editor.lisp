@@ -94,7 +94,9 @@
       ((:scancode-left) (move-hero :left))
       ((:scancode-l) (level-save-board (editor-level editor)))
       ((:scancode-r) (level-reset (editor-level editor)))
-      ((:scancode-q) (kit.sdl2:close-window editor)))))
+      ((:scancode-q) (kit.sdl2:close-window editor))
+      ((:scancode-m) (toggle-soundtrack))
+      ((:scancode-f) (setf *sfx-mute* (not *sfx-mute*))))))
 
 (defparameter *help-text*
   (format nil
@@ -157,4 +159,9 @@
                              (make-board (getf args :width)
                                          (getf args :height))))))))))
 
-(s:define-start-function (editor) editor (:resizable T))
+(s:define-start-function (editor) editor (:resizable T)
+  (:start
+    (music-init)
+    (play-soundtrack))
+  (:on-close (game)
+    (mute-soundtrack)))
