@@ -60,7 +60,7 @@
 
 (define-cell-drawer :food (state unit)
   (when state
-    (s:with-pen (s:make-pen :stroke (c state) :weight (c :food-weight))
+    (s:with-pen (s:make-pen :stroke (c state) :weight (* unit (c :food-weight)))
       (let ((drad (* (c :food-size)
                      (c :food-drad)
                      (sin (/ (mod (sc:time (c :food-animation-clock)) 1) pi)))))
