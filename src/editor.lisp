@@ -83,8 +83,7 @@
     (save-board (editor-board editor) file)))
 
 (defun editor-load (editor)
-  (alexandria:when-let ((file (and (not (editor-noload editor))
-                                   (editor-file editor)
+  (alexandria:when-let ((file (and (editor-file editor)
                                    (probe-file (editor-file editor)))))
     (setf (editor-board editor) (load-board file))))
 
@@ -108,5 +107,5 @@
       ((:scancode-q) (kit.sdl2:close-window editor)))))
 
 (s:define-start-function (editor) editor (:resizable T)
-  (:setup (editor) (editor-load editor))
+  (:setup (editor) (unless (editor-noload editor) (editor-load editor)))
   (:on-close (editor) (editor-save editor)))
