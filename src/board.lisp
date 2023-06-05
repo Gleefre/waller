@@ -125,7 +125,7 @@
     (tile-add x y name state)
     (set-thing-coordinates name x y)))
 
-(defun move (name dx dy &key wrap-x wrap-y check-hook)
+(defun move (name dx dy &key wrap-x wrap-y check-hook new-state)
   (multiple-value-bind (x y) (thing-coordinates name)
     (when (and (in-board x y))
       (let ((x* (if wrap-x
@@ -137,4 +137,10 @@
         (when (and (in-board x* y*)
                    (or (not check-hook)
                        (funcall check-hook (list x y) (list x* y*))))
-          (tile-add-thing x* y* name))))))
+          (tile-add-thing x* y* name (or new-state (thing-state name))))))))
+
+(defun thing-state (name)
+  (tilep$ (thing-cell name) name))
+
+(defun (setf thing-state) (new-state name)
+  (move name 0 0 :new-state new-state))
