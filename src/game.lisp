@@ -133,7 +133,9 @@
          ((:scancode-left :scancode-a) (move-hero :left))
          ((:scancode-q) (setf (game-screen game) :menu
                               (game-level game) NIL))
-         ((:scancode-r) (level-reset (game-level game))))
+         ((:scancode-r) (level-reset (game-level game)))
+         ((:scancode-m) (toggle-soundtrack))
+         ((:scancode-f) (setf *sfx-mute* (not *sfx-mute*))))
        (when (check-win)
          (setf (game-screen game) :win
                (c :win-animation) (sc:make-clock :speed (/ (c :win-animation-time))))
@@ -143,7 +145,9 @@
        (case (sdl2:scancode keysym)
          ((:scancode-right :scancode-n) (menu-next (game-menu game)))
          ((:scancode-left :scancode-p) (menu-previous (game-menu game)))
-         ((:scancode-q) (kit.sdl2:close-window game)))))))
+         ((:scancode-q) (kit.sdl2:close-window game))
+         ((:scancode-m) (toggle-soundtrack))
+         ((:scancode-f) (setf *sfx-mute* (not *sfx-mute*))))))))
 
 (s:define-start-function (start) game (:resizable T :title "Waller" :width 800 :height 800)
   (:start

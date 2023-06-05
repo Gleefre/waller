@@ -30,11 +30,23 @@
 (defun mute-soundtrack ()
   (h:transition *soundtrack* NIL))
 
+(defparameter *soundtrack-mute* NIL)
+
+(defun toggle-soundtrack ()
+  (if *soundtrack-mute*
+      (progn
+        (play-soundtrack)
+        (setf *soundtrack-mute* NIL))
+      (progn
+        (mute-soundtrack)
+        (setf *soundtrack-mute* T))))
+
 (defparameter *sfx-mute* NIL)
 
 (defun sfx (&rest notes)
-  (dolist (x notes)
-    (h:play (note x) :reset T)))
+  (unless *sfx-mute*
+    (dolist (x notes)
+      (h:play (note x) :reset T))))
 
 (defun music-init ()
   (unless h:*server*
