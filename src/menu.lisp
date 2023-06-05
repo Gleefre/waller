@@ -26,6 +26,21 @@
   (setf (game-level *game*) level
         (game-screen *game*) :level))
 
+(defun menu-next-p (menu)
+  (not (>= (* (page menu) (per-page menu))
+           (length (levels menu)))))
+
+(defun menu-next (menu)
+  (when (menu-next-p menu)
+    (incf (page menu))))
+
+(defun menu-previous-p (menu)
+  (not (<= (page menu) 1)))
+
+(defun menu-previous (menu)
+  (when (menu-previous-p menu)
+    (decf (page menu))))
+
 (defun draw-menu (menu width height)
   (s:background (c :menu-background))
   (let ((unit (min (/ width (menu-width menu))
