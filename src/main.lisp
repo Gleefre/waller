@@ -12,6 +12,11 @@
       (tile-rem x y :food))
     T))
 
+(defun check-win ()
+  (do-cells (:cell cell :result T)
+    (when (tilep$ cell :food)
+      (return-from check-win NIL))))
+
 (defun move-hero (direction)
   (unless (eq (tilep$ (thing-cell :hero)
                       (case direction

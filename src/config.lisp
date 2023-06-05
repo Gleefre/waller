@@ -39,3 +39,8 @@
 (defc :sfx-volume 0.1)
 
 (defc :select s:+magenta+)
+
+(defc :win-animation-time 1
+      :win-animation-background (s:rgb 0.2 0.5 0.3 0.3)
+      :win-font-color (s:rgb 0.4 0.8 0.8)
+      :win-font-size 1/15)

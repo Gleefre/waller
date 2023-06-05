@@ -23,6 +23,7 @@
   (make-instance 'menu))
 
 (defun enter-level (level)
+  (setf (menu-hovers (game-menu *game*)) (make-hash-table))
   (level-reset level)
   (setf (game-level *game*) level
         (game-screen *game*) :level))
@@ -114,7 +115,6 @@
                              :press (let ((n n))
                                       (lambda (b)
                                         (declare (ignore b))
-                                        (setf (menu-hovers menu) (make-hash-table))
                                         (enter-level (level menu n))))
                              :hover (let ((pos pos))
                                       (lambda ()
