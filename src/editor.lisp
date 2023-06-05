@@ -78,6 +78,16 @@
                  (s:translate 0 unit)
                  (s:translate 0 (/ unit 4)))))))
 
+(defun editor-save (editor)
+  (alexandria:when-let ((file (editor-file editor)))
+    (save-board (editor-board editor) file)))
+
+(defun editor-load (editor)
+  (alexandria:when-let ((file (and (not (editor-noload editor))
+                                   (editor-file editor)
+                                   (probe-file (editor-file editor)))))
+    (setf (editor-board editor) (load-board file))))
+
 (defmethod kit.sdl2:mousebutton-event :around ((editor editor) state timestamp button x y)
   (with-board ((editor-board editor))
     (call-next-method)))
@@ -96,11 +106,5 @@
       ((:scancode-q) (kit.sdl2:close-window editor)))))
 
 (s:define-start-function (editor) editor (:resizable T)
-  (:setup (editor)
-    (alexandria:when-let ((file (and (not (editor-noload editor))
-                                     (editor-file editor)
-                                     (probe-file (editor-file editor)))))
-      (setf (editor-board editor) (load-board file))))
-  (:on-close (editor)
-    (alexandria:when-let ((file (editor-file editor)))
-      (save-board (editor-board editor) file))))
+  (:setup (editor) (editor-load editor))
+  (:on-close (editor) (editor-save editor)))
