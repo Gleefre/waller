@@ -1,10 +1,10 @@
 (in-package #:waller)
 
 (defun %level-file (n)
-  (data-path (format nil "levels/~a.brd" n)))
+  (data-path (format nil (c :level-file-template) n)))
 
 (defun %level-cleared (n)
-  (data-path (format nil "progress/~a.cleared" n)))
+  (data-path (format nil (c :level-cleared-templay) n)))
 
 (defclass level ()
   ((number :initarg :n :accessor level-number)
