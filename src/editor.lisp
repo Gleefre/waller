@@ -103,6 +103,8 @@
       ((:scancode-down :scancode-s) (move-hero :down))
       ((:scancode-right :scancode-d) (move-hero :right))
       ((:scancode-left :scancode-a) (move-hero :left))
+      ((:scancode-l) (editor-save editor))
+      ((:scancode-r) (editor-load editor))
       ((:scancode-q) (kit.sdl2:close-window editor)))))
 
 (s:define-start-function (editor) editor (:resizable T)
