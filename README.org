@@ -5,6 +5,10 @@
 #+description: This is a README file for the Waller game
 #+language: en
 
+* Screenshots
+  [[screens/screen-level-3.png]]
+  [[screens/screen-level-6.png]]
+  [[screens/screen-level-7.png]]
 * Installation
 ** Requirements
    - Libraries
