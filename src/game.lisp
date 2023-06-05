@@ -17,10 +17,6 @@
   (with-board ((game-board game))
     (call-next-method)))
 
-(defun check-tile (from to)
-  (declare (ignorable from))
-  (apply #'tilep to))
-
 (defmethod kit.sdl2:keyboard-event ((game game) state timestamp repeat-p keysym)
   (when (eq state :keydown)
     (case (game-screen game)
