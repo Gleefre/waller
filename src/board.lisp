@@ -5,10 +5,13 @@
    (states    :initarg :states    :accessor states
               :initform (make-hash-table :test 'equal))
    (positions :initarg :positions :accessor positions
-              :initform (make-hash-table :test 'equal))))
+              :initform (make-hash-table :test 'equal))
+   (description :initarg :description :accessor board-description :initform "")))
 
-(defun make-board (width height)
-  (make-instance 'board :cells (make-array (list width height) :initial-element ())))
+(defun make-board (width height &optional (description ""))
+  (make-instance 'board
+                 :cells (make-array (list width height) :initial-element ())
+                 :description description))
 
 ;; We have one global board
 

@@ -15,7 +15,8 @@
       :menu-button       (s:rgb 0.3 0.7 0.3)
       :menu-button-hover (s:rgb 0.5 0.9 0.5)
       :menu-margin       1/5
-      :menu-font-color   s:+black+)
+      :menu-font-color   s:+black+
+      :cleared           (s:rgb 0.2 0.3 0.9))
 
 (defc :soundtrack    "soundtrack.ogg"
       :note-template "notes/note-~a.ogg"
@@ -32,3 +33,5 @@
       :food-weight 1/15)
 
 (defc :sfx-volume 0.1)
+
+(defc :select s:+magenta+)
