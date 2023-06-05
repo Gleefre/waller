@@ -9,7 +9,7 @@
       :wall        s:+green+
       :cloud       (s:gray 0.7)
       :cloud-image "cloud.png"
-      :margin      1/15)
+      :margin      1/8)
 
 (defc :menu-background   (s:gray 0.2)
       :menu-button       (s:rgb 0.3 0.7 0.3)
