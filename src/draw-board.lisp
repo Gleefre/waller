@@ -1,7 +1,7 @@
 (in-package #:waller)
 
 (defparameter *cell-drawers* (make-hash-table))
-(defparameter *cell-draw-order* '(:tile :hero :uwall :dwall :rwall :lwall :cloud :select))
+(defparameter *cell-draw-order* '(:tile :food :hero :uwall :dwall :rwall :lwall :cloud :select))
 
 (defmacro define-cell-drawer (feature-name (state unit) &body body)
   `(setf (gethash ,feature-name *cell-drawers*)
@@ -24,33 +24,31 @@
       (s:rect (* unit           (c :margin))   (* unit           (c :margin))
               (* unit (- 1 (* 2 (c :margin)))) (* unit (- 1 (* 2 (c :margin))))))))
 
-(defc :hero-animation-clock (sc:make-clock))
-
 (define-cell-drawer :hero (state unit)
   (when state
-    (with-color ((c :hero))
+    (with-color ((c state))
       (s:ellipse (/ unit 2) (/ unit 2)
                  (* unit (* 1/3 (sin (sc:time (c :hero-animation-clock)))))
                  (* unit 1/3)))))
 
 (define-cell-drawer :uwall (state unit)
   (when state
-    (with-color ((c :wall))
+    (with-color ((c state))
       (s:rect 0 0 unit (* unit (c :margin))))))
 
 (define-cell-drawer :dwall (state unit)
   (when state
-    (with-color ((c :wall))
+    (with-color ((c state))
       (s:rect 0 (* unit (- 1 (c :margin))) unit (* unit (c :margin))))))
 
 (define-cell-drawer :rwall (state unit)
   (when state
-    (with-color ((c :wall))
+    (with-color ((c state))
       (s:rect (* unit (- 1 (c :margin))) 0 (* unit (c :margin)) unit))))
 
 (define-cell-drawer :lwall (state unit)
   (when state
-    (with-color ((c :wall))
+    (with-color ((c state))
       (s:rect 0 0 (* unit (c :margin)) unit))))
 
 (define-cell-drawer :cloud (state unit)
@@ -59,6 +57,16 @@
       (s:rect 0 0 unit unit)
       (s:image (s:load-resource (data-path (c :cloud-image)))
                0 0 unit unit))))
+
+(define-cell-drawer :food (state unit)
+  (when state
+    (s:with-pen (s:make-pen :stroke (c state) :weight (c :food-weight))
+      (let ((drad (* (c :food-size)
+                     (c :food-drad)
+                     (sin (/ (mod (sc:time (c :food-animation-clock)) 1) pi)))))
+        (s:ellipse (/ unit 2) (/ unit 2)
+                   (* 1/2 unit (+ (c :food-size) drad))
+                   (* 1/2 unit (- (c :food-size) drad)))))))
 
 (defun draw-board (board width height)
   (with-board (board)

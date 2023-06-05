@@ -20,3 +20,13 @@
 (defc :soundtrack    "soundtrack.ogg"
       :note-template "notes/note-~a.ogg"
       :notes-range   '(-21 27))
+
+(defc :A (s:rgb 0.5 0.2 0.3)
+      :B (s:rgb 0.2 0.5 0.3))
+
+(defc :hero-animation-clock (sc:make-clock)
+      :food-animation-clock (sc:make-clock))
+
+(defc :food-size 1/5
+      :food-drad 1/5
+      :food-weight 5)
