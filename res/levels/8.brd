@@ -1,0 +1,18 @@
+
+(:CELLS
+ #2A(((:DWALL :A :HERO :A :TILE T) (:TILE T) (:TILE T) (:RWALL :A :TILE T)
+      (:TILE T))
+     ((:RWALL :A :TILE T) (:RWALL :A :TILE T) (:LWALL :A :TILE T)
+      (:LWALL :A :TILE T) (:UWALL :A :TILE T))
+     ((:RWALL :A :TILE T) (:TILE T) (:UWALL :A :TILE T)
+      (:UWALL :A :LWALL :A :TILE T) (:TILE T))
+     ((:FOOD :A :RWALL :A :TILE T) (:RWALL :A :UWALL :A :TILE T) (:TILE T)
+      (:UWALL :A :TILE T) (:RWALL :A :UWALL :A :TILE T))
+     ((:LWALL :A :TILE T) (:LWALL :A :TILE T) (:UWALL :A :LWALL :A :TILE T)
+      (:RWALL :A :UWALL :A :TILE T) (:RWALL :A :DWALL :A :TILE T))
+     ((:TILE T) (:UWALL :B :LWALL :B :TILE T)
+      (:LWALL :B :UWALL :A :RWALL :A :TILE T) (:LWALL :B :RWALL :A :TILE T)
+      (:LWALL :B :DWALL :A :TILE T))
+     ((:TILE T) (:DWALL :B :TILE T) (:TILE T) (:FOOD :B :TILE T)
+      (:UWALL :B :FOOD :B :DWALL :A :TILE T)))
+ :STATES NIL :POSITIONS ((:HERO 0 0)) :DESCRIPTION "") 
