@@ -11,7 +11,6 @@
 (defparameter *things-to-move*   '((:hero :A :B)))
 
 (defun edit-cell (x y mode state &optional (button 1))
-  (print (list x y mode state))
   (cond ((member mode *features-to-edit* :key #'car)
          (tile-toggle x y mode state))
         ((member mode *things-to-move* :key #'car)
