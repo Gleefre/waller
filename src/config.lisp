@@ -25,8 +25,8 @@
       :B (s:rgb 0.2 0.5 0.3))
 
 (defc :hero-animation-clock (sc:make-clock)
-      :food-animation-clock (sc:make-clock))
+      :food-animation-clock (sc:make-clock :speed 1.25))
 
 (defc :food-size 1/5
-      :food-drad 1/5
+      :food-drad 1/3
       :food-weight 5)
