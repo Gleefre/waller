@@ -39,7 +39,9 @@ bundle: all
 
 lin-bundle: bundle
 	cp run.sh $(APP)
+	cp run-editor.sh $(APP)
 	zip -r $(APP)-lin $(APP)
 
 win-bundle: bundle
 	cp run.bat $(APP)
+	cp run-editor.bat $(APP)
