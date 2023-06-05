@@ -30,3 +30,5 @@
 (defc :food-size 1/5
       :food-drad 1/3
       :food-weight 5)
+
+(defc :sfx-volume 0.1)

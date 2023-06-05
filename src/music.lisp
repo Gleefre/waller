@@ -13,7 +13,7 @@
   (setf (gethash x *notes*) note))
 
 (defun create-note (x)
-  (setf (note x) (h:create (note-file x) :mixer :effect)))
+  (setf (note x) (h:create (note-file x) :mixer :effect :volume (c :sfx-volume))))
 
 (defun create-notes ()
   (destructuring-bind (min max) (c :notes-range)
