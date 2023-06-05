@@ -3,10 +3,8 @@
 (defc :default-font "RobotoMono-Bold.ttf"
       :error-font   "RobotoMono-Bold.ttf")
 
-(defc :background  s:+black+
-      :tile        s:+white+
-      :hero        s:+green+
-      :wall        s:+green+
+(defc :background  (s:rgb 0.25 0.1 0.1)
+      :tile        (s:rgb 0.1 0.2 0.3)
       :cloud       (s:gray 0.7)
       :cloud-image "cloud.png"
       :margin      1/8)

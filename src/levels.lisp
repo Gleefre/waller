@@ -21,7 +21,8 @@
 
 (defun level-board (level)
   (or (board-cache level)
-      (load-board (level-file level))))
+      (setf (board-cache level)
+            (load-board (level-file level)))))
 
 (defun (setf level-board) (board level)
   (save-board board (level-file level)))

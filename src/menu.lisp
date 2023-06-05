@@ -23,6 +23,7 @@
   (make-instance 'menu))
 
 (defun enter-level (level)
+  (level-reset level)
   (setf (game-level *game*) level
         (game-screen *game*) :level))
 
