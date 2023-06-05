@@ -1,8 +1,16 @@
 (in-package #:waller)
 
-(defun check-tile (from to)
+(defun check-tile (from to &aux (x (car to))
+                                (y (cadr to)))
   (declare (ignorable from))
-  (apply #'tilep to))
+  (when (tilep x y)
+    (when (tilep x y :food)
+      (case (tilep x y :food)
+        (:A (sfx 3 15))
+        (:B (sfx -2 10)))
+      (setf (thing-state :hero) (tilep x y :food))
+      (tile-rem x y :food))
+    T))
 
 (defun move-hero (direction)
   (unless (eq (tilep$ (thing-cell :hero)
