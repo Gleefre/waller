@@ -9,7 +9,7 @@
   (destructuring-bind (w h) (array-dimensions cells)
     (let ((clean-cells (make-array (list w h))))
       (dotimes (x w clean-cells)
-        (dotimes (y w)
+        (dotimes (y h)
           (setf (aref clean-cells x y)
                 (clean-cell (aref cells x y))))))))
 
