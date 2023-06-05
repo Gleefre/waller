@@ -5,10 +5,6 @@
 #+description: This is a README file for the Waller game
 #+language: en
 
-* Screenshots
-  [[screens/screen-level-3.png]]
-  [[screens/screen-level-6.png]]
-  [[screens/screen-level-7.png]]
 * Installation
 ** Requirements
    - Libraries
@@ -19,6 +15,34 @@
      - SDL2, SDL2 Image, SDL2 TTF
        =sketch= relies on =SDL2= library which is a C library.
        See [[https://github.com/vydd/sketch#foreign-dependencies][sketch's README]] for more details.
+*** Fetch non-quicklisp libraries
+    You can fetch all non-quicklisp libraries with git clone:
+    #+BEGIN_SRC bash
+    cd $HOME/quicklisp/local-projects/
+    git clone https://github.com/Gleefre/stopclock
+    git clone https://github.com/Gleefre/sketch-fit
+    git clone https://github.com/Gleefre/sketch -b define-start-function-2
+    git clone https://github.com/Shirakumo/harmony  # Needs most recent fixes
+    git clone https://github.com/Gleefre/cl-mixed  # Needs most recent fixes + has newer libmixed.so for linux
+    #+END_SRC
+** Building
+   You can build the game with make:
+   #+BEGIN_SRC bash
+   # Builds waller and waller-editor
+   make build
+   # Bundles executable and all needed resources to waller/ folder
+   make bundle
+   # For linux
+   # Adds run.sh and run-editor.sh scrips to the bundle and creates a zip archive
+   make lin-bundle
+   # For windows
+   # Adds run.bat and run-editor.bar scrips to the bundle
+   make win-bundle
+   #+END_SRC
+   You can also specify which lisp implementation to use (sbcl is used by default) with ~LISP~ variable:
+   #+BEGIN_SRC bash
+   LISP=ecl make build
+   #+END_SRC
 ** Running
    To run this game you need to load the ~:waller~ system:
    #+BEGIN_SRC lisp
@@ -33,6 +57,17 @@
    (waller:start-toplevel)
    #+END_SRC
    ~start-toplevel~ will quit the CL process when you close the game.
+   You can open a level editor with ~edit-level~:
+   #+BEGIN_SRC lisp
+   ;; to edit existing level #N
+   (waller:edit-level N)
+   ;; to edit level #M with W x H board
+   (waller:edit-level M W H)
+   #+END_SRC
+* Screenshots
+  [[screens/screen-level-3.png]]
+  [[screens/screen-level-6.png]]
+  [[screens/screen-level-7.png]]
 * License
    Copyright 2023 Gleefre
 
