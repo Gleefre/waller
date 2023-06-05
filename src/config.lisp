@@ -4,10 +4,10 @@
       :error-font   "RobotoMono-Bold.ttf")
 
 (defc :background  (s:rgb 0.25 0.1 0.1)
-      :tile        (s:rgb 0.1 0.2 0.3)
+      :tile        (s:rgb 0.1 0.3 0.2)
       :cloud       (s:gray 0.7)
       :cloud-image "cloud.png"
-      :margin      1/8)
+      :margin      1/12)
 
 (defc :menu-background   (s:rgb 0.25 0.1 0.1)
       :menu-button       (s:rgb 0.3 0.7 0.3)
@@ -26,8 +26,8 @@
       :note-template "notes/note-~a.ogg"
       :notes-range   '(-21 27))
 
-(defc :A (s:rgb 0.5 0.2 0.3)
-      :B (s:rgb 0.2 0.5 0.3))
+(defc :A (s:rgb 0.7 0.3 0.1)
+      :B (s:rgb 0.2 0.8 0.3))
 
 (defc :hero-animation-clock (sc:make-clock)
       :food-animation-clock (sc:make-clock :speed 1.25))
@@ -41,6 +41,6 @@
 (defc :select s:+magenta+)
 
 (defc :win-animation-time 1
-      :win-animation-background (s:rgb 0.2 0.5 0.3 0.3)
+      :win-animation-background (s:rgb 0.2 0.1 0.3 0.3)
       :win-font-color (s:rgb 0.4 0.8 0.8)
       :win-font-size 1/15)
