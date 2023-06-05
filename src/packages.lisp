@@ -2,6 +2,7 @@
   (:use #:cl)
   (:export #:start
            #:start-toplevel
+           #:edit-level
            #:editor-toplevel)
   (:local-nicknames (#:s  #:sketch)
                     (#:sf #:sketch-fit)

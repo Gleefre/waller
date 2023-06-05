@@ -48,7 +48,11 @@
     (alexandria:when-let ((flag-file (probe-file (%level-cleared (level-number level)))))
       (delete-file flag-file))))
 
-(defun edit-level (n &optional (width 10) (height 10) new?)
+(defun edit-level (n &optional (width 10) (height 10) &aux (new? (and width height
+                                                                      (integerp width)
+                                                                      (integerp height)
+                                                                      (plusp width)
+                                                                      (plusp height))))
   (editor :level (make-level n (when new? (make-board width height)))))
 
 (defun %get-levels ()
