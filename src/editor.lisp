@@ -82,6 +82,19 @@
   (with-board ((editor-board editor))
     (call-next-method)))
 
+(defmethod kit.sdl2:keyboard-event :around ((editor editor) state timestamp repeat-p keysym)
+  (with-board ((editor-board editor))
+    (call-next-method)))
+
+(defmethod kit.sdl2:keyboard-event ((editor editor) state timestamp repeat-p keysym)
+  (when (eq state :keydown)
+    (case (sdl2:scancode keysym)
+      ((:scancode-up :scancode-w) (move-hero :up))
+      ((:scancode-down :scancode-s) (move-hero :down))
+      ((:scancode-right :scancode-d) (move-hero :right))
+      ((:scancode-left :scancode-a) (move-hero :left))
+      ((:scancode-q) (kit.sdl2:close-window editor)))))
+
 (s:define-start-function (editor) editor (:resizable T)
   (:setup (editor)
     (alexandria:when-let ((file (and (not (editor-noload editor))
