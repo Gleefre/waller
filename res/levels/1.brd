@@ -1,0 +1,6 @@
+
+(:CELLS
+ #2A((NIL (:HERO :A :TILE T) NIL)
+     (NIL (:FOOD NIL :TILE T) NIL)
+     (NIL (:FOOD :A :TILE T) NIL))
+ :STATES NIL :POSITIONS ((:HERO 0 1))) 
