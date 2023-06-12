@@ -1,6 +1,6 @@
 (asdf:defsystem "waller"
   :description "Waller - Game for Lisp Game Jam 2023"
-  :version "0.3.1"
+  :version "0.3.2"
   :author "Gleefre <varedif.a.s@gmail.com>"
   :licence "Apache 2.0"
 
@@ -38,7 +38,7 @@
 
 (asdf:defsystem "waller/editor"
   :description "Waller - Game for Lisp Game Jam 2023 - level editor"
-  :version "0.3.1"
+  :version "0.3.2"
   :author "Gleefre <varedif.a.s@gmail.com>"
   :licence "Apache 2.0"
 
