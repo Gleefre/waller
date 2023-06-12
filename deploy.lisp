@@ -1,8 +1,10 @@
-(in-package #:cl-user)
+(require :uiop)
+(require :asdf)
 
+(ql:quickload :deploy)
+(load "waller.asd")
 (push :deploy *features*)
-(asdf:load-asd (merge-pathnames "waller.asd" (uiop:getcwd)))
-(ql:quickload '(:deploy :waller))
+(ql:quickload :waller)
 
 (deploy:define-resource-directory data "res/")
 
@@ -26,4 +28,8 @@
  #+windows (org.shirakumo.fraf.mixed.winmm.cffi::winmm
             org.shirakumo.fraf.mixed.wasapi.cffi::avrt)
  #+darwin  (org.shirakumo.fraf.mixed.coreaudio.cffi::audio-toolbox
-            org.shirakumo.fraf.mixed.coreaudio.cffi::audio-unit))
+            org.shirakumo.fraf.mixed.coreaudio.cffi::audio-unit)
+ ;; Can't ship SDL2 - too many dependencies
+ #+linux (sdl2::libsdl2
+          sdl2-image::libsdl2-image
+          sdl2-ttf::libsdl2-ttf))

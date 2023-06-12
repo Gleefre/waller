@@ -1,5 +1,3 @@
-(in-package #:cl-user)
 (push :deploy-console *features*)
-(load (merge-pathnames "deploy.lisp" (uiop:getcwd)))
-(ql:quickload :waller/editor)
+(load "deploy.lisp")
 (asdf:make :waller/editor)

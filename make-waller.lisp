@@ -1,3 +1,2 @@
-(in-package #:cl-user)
-(load (merge-pathnames "deploy.lisp" (uiop:getcwd)))
+(load "deploy.lisp")
 (asdf:make :waller)
