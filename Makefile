@@ -28,6 +28,7 @@ bundle: all
 	cp run-editor.bat $(APP)
 
 lin-bundle: bundle
+	[ -f $(APP)/bin/libzstd.so.1.* ] && mv $(APP)/bin/libzstd.so.1.* $(APP)/bin/libzstd.so.1
 	zip -r $(APP)-lin $(APP)
 
 win-bundle: bundle
