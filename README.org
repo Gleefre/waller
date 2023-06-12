@@ -41,8 +41,9 @@
    #+END_SRC
    You can also specify which lisp implementation to use (sbcl is used by default) with ~LISP~ variable:
    #+BEGIN_SRC bash
-   LISP=ecl make build
+   LISP=ccl make build
    #+END_SRC
+   Supported implementations: sbcl, ccl.
 ** Running
    To run this game you need to load the ~:waller~ system:
    #+BEGIN_SRC lisp
