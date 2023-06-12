@@ -34,20 +34,19 @@ jobs:
     - name: download SDL2
       uses: albin-johansson/download-sdl2@v2
       with:
-        # FIXME downgraded because of sdl wav bug
-        version: 2.0.22
+        version: 2.26.5
         sources_destination: .
         binaries_destination: .
     - name: download SDL2-IMAGE
       uses: albin-johansson/download-sdl2-image@v2
       with:
-        version: 2.6.2
+        version: 2.6.3
         sources_destination: .
         binaries_destination: .
     - name: download SDL-TTF
       uses: albin-johansson/download-sdl2-ttf@v1
       with:
-        version: 2.20.1
+        version: 2.20.2
         sources_destination: .
         binaries_destination: .
 
