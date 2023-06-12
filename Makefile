@@ -26,7 +26,8 @@ bundle: all
 lin-bundle: bundle
 	cp run.sh $(APP)
 	cp run-editor.sh $(APP)
-	[ -f $(APP)/bin/libzstd.so.1.* ] && mv $(APP)/bin/libzstd.so.1.* $(APP)/bin/libzstd.so.1
+	if [ -f $(APP)/bin/libzstd.so.1.* ]; then mv $(APP)/bin/libzstd.so.1.* $(APP)/bin/libzstd.so.1; fi
+	if [ -f $(APP)/bin/libz.so.1.* ]; then mv $(APP)/bin/libz.so.1.* $(APP)/bin/libz.so.1; fi
 	zip -r $(APP)-lin $(APP)
 
 win-bundle: bundle
