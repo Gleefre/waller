@@ -22,13 +22,13 @@ bundle: all
 	mv bin $(APP)/
 	cp LICENSE $(APP)
 	cp NOTICE $(APP)
-	cp run.sh $(APP)
-	cp run-editor.sh $(APP)
-	cp run.bat $(APP)
-	cp run-editor.bat $(APP)
 
 lin-bundle: bundle
+	cp run.sh $(APP)
+	cp run-editor.sh $(APP)
 	[ -f $(APP)/bin/libzstd.so.1.* ] && mv $(APP)/bin/libzstd.so.1.* $(APP)/bin/libzstd.so.1
 	zip -r $(APP)-lin $(APP)
 
 win-bundle: bundle
+	cp run.bat $(APP)
+	cp run-editor.bat $(APP)
