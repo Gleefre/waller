@@ -3,9 +3,13 @@ APP = waller
 
 all: clean build
 
-build:
+game:
 	cat make-waller.lisp | $(LISP)
+
+editor:
 	cat make-waller-editor.lisp | $(LISP)
+
+build: game editor
 
 clean:
 	rm -rf $(APP)
@@ -18,12 +22,12 @@ bundle: all
 	mv bin $(APP)/
 	cp LICENSE $(APP)
 	cp NOTICE $(APP)
-
-lin-bundle: bundle
 	cp run.sh $(APP)
 	cp run-editor.sh $(APP)
+	cp run.bat $(APP)
+	cp run-editor.bat $(APP)
+
+lin-bundle: bundle
 	zip -r $(APP)-lin $(APP)
 
 win-bundle: bundle
-	cp run.bat $(APP)
-	cp run-editor.bat $(APP)
