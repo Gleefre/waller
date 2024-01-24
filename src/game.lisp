@@ -149,7 +149,7 @@
          ((:scancode-m) (toggle-soundtrack))
          ((:scancode-f) (setf *sfx-mute* (not *sfx-mute*))))))))
 
-(s:define-start-function (start) game (:resizable T :title "Waller" :width 800 :height 800)
+(s+:define-start-function (start) game (:resizable T :title "Waller" :width 800 :height 800)
   (:start
     (music-init)
     (play-soundtrack))

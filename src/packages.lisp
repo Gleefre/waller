@@ -5,6 +5,7 @@
            #:edit-level
            #:editor-toplevel)
   (:local-nicknames (#:s  #:sketch)
+                    (#:s+ #:sketch-utils)
                     (#:sf #:sketch-fit)
                     (#:sc #:stopclock)
                     (#:h  #:org.shirakumo.fraf.harmony)

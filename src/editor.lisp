@@ -159,7 +159,7 @@
                              (make-board (getf args :width)
                                          (getf args :height))))))))))
 
-(s:define-start-function (editor) editor (:resizable T)
+(s+:define-start-function (editor) editor (:resizable T)
   (:start
     (music-init)
     (play-soundtrack))
